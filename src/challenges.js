@@ -64,7 +64,7 @@ function catAndMouse(mouse, cat1, cat2) {
 
   if (distanciaGato1 > distanciaGato2) {
     return ('cat2');
-  } else if (distanciaGato2 > distanciaGato1){
+  } else if (distanciaGato2 > distanciaGato1) {
     return ('cat1');
   } else if (distanciaGato1 === distanciaGato2) {
     return ('os gatos trombam e o rato foge');
@@ -72,8 +72,23 @@ function catAndMouse(mouse, cat1, cat2) {
 }
 
 // Desafio 8
-function fizzBuzz() {
+function fizzBuzz(lista) {
   // seu código aqui
+  let result = [];
+  let aux;
+  for (let index = 0; index < lista.length; index += 1) {
+    aux = lista[index];
+    if (aux % 3 === 0 && aux % 5 !== 0) {
+      result.push('fizz');
+    } else if (aux % 5 === 0 && aux % 3 !== 0) {
+      result.push('buzz');
+    } else if (aux % 3 === 0 && aux % 5 === 0) {
+      result.push('fizzBuzz');
+    } else if (aux % 3 !== 0 && aux % 5 !== 0) {
+      result.push('bug!');
+    }
+  }
+  return result;
 }
 
 // Desafio 9
