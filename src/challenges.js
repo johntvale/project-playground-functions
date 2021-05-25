@@ -22,8 +22,12 @@ function splitSentence(phrase) {
 }
 
 // Desafio 4
-function concatName() {
+function concatName(list) {
   // seu código aqui
+  let ultimo = list[0];
+  let primeiro = list[list.length - 1] + ', ';
+  let result = primeiro + ultimo;
+  return (result);
 }
 
 // Desafio 5
