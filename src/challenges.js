@@ -18,7 +18,7 @@ function splitSentence(phrase) {
   let splitedSentence = [];
 
   splitedSentence = phrase.split(' ');
-  return (splitedSentence);
+  return splitedSentence;
 }
 
 // Desafio 4
@@ -27,17 +27,33 @@ function concatName(list) {
   let ultimo = list[0];
   let primeiro = list[list.length - 1] + ', ';
   let result = primeiro + ultimo;
-  return (result);
+  return result;
 }
 
 // Desafio 5
-function footballPoints() {
+function footballPoints(wins, ties) {
   // seu código aqui
+  let pontos = wins * 3;
+  pontos += ties;
+  return pontos;
 }
 
 // Desafio 6
-function highestCount() {
+function highestCount(valores) {
   // seu código aqui
+  let maior = valores[0];
+  let repete = 0;
+  for (let index = 1; index < valores.length; index += 1) {
+    if (maior < valores[index]) {
+      maior = valores[index];
+    }
+  }
+  for (let index2 = 0; index2 < valores.length; index2 +=1) {
+    if (maior === valores[index2]) {
+      repete += 1;
+    }
+  }
+  return repete;
 }
 
 // Desafio 7
