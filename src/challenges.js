@@ -48,7 +48,7 @@ function highestCount(valores) {
       maior = valores[index];
     }
   }
-  for (let index2 = 0; index2 < valores.length; index2 +=1) {
+  for (let index2 = 0; index2 < valores.length; index2 += 1) {
     if (maior === valores[index2]) {
       repete += 1;
     }
@@ -92,13 +92,50 @@ function fizzBuzz(lista) {
 }
 
 // Desafio 9
-function encode() {
+function encode(phrase) {
   // seu código aqui
+  let encoded = '';
+  for (let index = 0; index < phrase.length; index += 1) {
+    // se o phrase na posição index não tiver nenhuma das vogais, o encoded recebe essa letra.
+    if (phrase[index] !== 'a' && phrase[index] !== 'e' && phrase[index] !== 'i' && phrase[index] !== 'o' && phrase[index] !== 'u') {
+      encoded += phrase[index];
+      // se phrase for alguma vogal, encoded recebe o número correspondente a sua vogal.
+    } else if (phrase[index] === 'a') {
+      encoded += '1';
+    } else if (phrase[index] === 'e') {
+      encoded += '2';
+    } else if (phrase[index] === 'i') {
+      encoded += '3';
+    } else if (phrase[index] === 'o') {
+      encoded += '4';
+    } else if (phrase[index] === 'u') {
+      encoded += '5';
+    }
+  }
+  return encoded;
 }
 
-// Desafio 10
-function decode() {
+function decode(phrase2) {
   // seu código aqui
+  let decoded = '';
+  for (let index = 0; index < phrase2.length; index += 1) {
+    // se o phrase2 na posição index não tiver nenhum número de 1 a 5, o encoded recebe essa letra.
+    if (phrase2[index] !== '1' && phrase2[index] !== '2' && phrase2[index] !== '3' && phrase2[index] !== '4' && phrase2[index] !== '5') {
+      decoded += phrase2[index];
+      // se phrase2 for alguma número de 1 a 5, encoded recebe a vogal correspondente ao seu número.
+    } else if (phrase2[index] === '1') {
+      decoded += 'a';
+    } else if (phrase2[index] === '2') {
+      decoded += 'e';
+    } else if (phrase2[index] === '3') {
+      decoded += 'i';
+    } else if (phrase2[index] === '4') {
+      decoded += 'o';
+    } else if (phrase2[index] === '5') {
+      decoded += 'u';
+    }
+  }
+  return decoded;
 }
 
 module.exports = {
