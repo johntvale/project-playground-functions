@@ -98,8 +98,24 @@ function triangleCheck(lineA, lineB, lineC) {
 }
 
 // Desafio 13
-function hydrate() {
-  // seu código aqui
+function hydrate(qtdCerveja) {
+  let expressaoRegular = /\d+/g; // usar /d para procurar digitos, + para mais de 1 dígito, e colocar entre "//" para definir como expressão regular
+  let resultadoBusca = qtdCerveja.match(expressaoRegular);
+  let soma = 0;
+  let stringReturn = '';
+
+  for (let index = 0; index < resultadoBusca.length; index += 1) { // encontrar números e somar na variável 'soma'
+    let atual = parseInt(resultadoBusca[index], 0);
+    soma += atual;
+  }
+  stringReturn = String(soma);
+
+  if (stringReturn === '1') {
+    return (stringReturn + ' copo de água');
+  }
+  if (stringReturn !== '1') {
+    return (stringReturn + ' copos de água');
+  }
 }
 
 module.exports = {
