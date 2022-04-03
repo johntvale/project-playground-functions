@@ -1,9 +1,8 @@
 // Desafio 1
 function compareTrue(a, b) {
   // seu código aqui
-  if (a === true && b === true) {
-    return true;
-  } return false;
+  if (a === true && b === true) return true;
+  return false;
 }
 
 // Desafio 2
@@ -24,117 +23,128 @@ function splitSentence(phrase) {
 // Desafio 4
 function concatName(list) {
   // seu código aqui
-  let ultimo = list[0];
-  let primeiro = list[list.length - 1] + ', ';
-  let result = primeiro + ultimo;
-  return result;
+  const lastPosition = list.length - 1;
+  const firstItem = list[0];
+  const lastItem = list[lastPosition];
+
+  return `${lastItem}, ${firstItem}`;
 }
 
 // Desafio 5
 function footballPoints(wins, ties) {
   // seu código aqui
-  let pontos = wins * 3;
-  pontos += ties;
-  return pontos;
+  let points = wins * 3;
+
+  return points + ties;
 }
 
 // Desafio 6
-function highestCount(valores) {
+function highestCount(values) {
   // seu código aqui
-  let maior = valores[0];
-  let repete = 0;
-  for (let index = 1; index < valores.length; index += 1) {
-    if (maior < valores[index]) {
-      maior = valores[index];
+  let largestNumber = values.sort((a, b) => (b - a))[0];
+  let repetitions = 0;
+
+  for (let index = 0; index < values.length; index += 1) {
+    if (largestNumber === values[index]) {
+      repetitions += 1;
     }
   }
-  for (let index2 = 0; index2 < valores.length; index2 += 1) {
-    if (maior === valores[index2]) {
-      repete += 1;
-    }
-  }
-  return repete;
+  return repetitions;
 }
 
 // Desafio 7
 function catAndMouse(mouse, cat1, cat2) {
   // seu código aqui
-  let distanciaGato1 = Math.abs(mouse - cat1);
-  let distanciaGato2 = Math.abs(mouse - cat2);
+  let distanceCat1 = Math.abs(mouse - cat1);
+  let distanceCat2 = Math.abs(mouse - cat2);
 
-  if (distanciaGato1 > distanciaGato2) {
-    return ('cat2');
-  } else if (distanciaGato2 > distanciaGato1) {
-    return ('cat1');
-  } else if (distanciaGato1 === distanciaGato2) {
-    return ('os gatos trombam e o rato foge');
-  }
+  if (distanceCat1 > distanceCat2) return 'cat2';
+  if (distanceCat1 < distanceCat2) return 'cat1';
+  return 'os gatos trombam e o rato foge';
+}
+
+function isFizz(num) {
+  if (num % 3 === 0 && num % 5 !== 0) return true;
+  return false;
+}
+
+function isBuzz(num) {
+  if (num % 3 !== 0 && num % 5 === 0) return true;
+  return false;
+}
+
+function isFizzBuzz(num) {
+  if (num % 3 === 0 && num % 5 === 0) return true;
+  return false;
+}
+
+function isBug(num) {
+  if (num % 3 !== 0 && num % 5 !== 0) return true;
+  return false;
 }
 
 // Desafio 8
-function fizzBuzz(lista) {
-  // seu código aqui
-  let result = [];
-  let aux;
-  for (let index = 0; index < lista.length; index += 1) {
-    aux = lista[index];
-    if (aux % 3 === 0 && aux % 5 !== 0) {
-      result.push('fizz');
-    } else if (aux % 5 === 0 && aux % 3 !== 0) {
-      result.push('buzz');
-    } else if (aux % 3 === 0 && aux % 5 === 0) {
-      result.push('fizzBuzz');
-    } else if (aux % 3 !== 0 && aux % 5 !== 0) {
-      result.push('bug!');
-    }
-  }
-  return result;
+function fizzBuzz(receivedList) {
+//   // seu código aqui
+
+  const resultList = [];
+
+  receivedList.forEach((currentNumber) => {
+    if (isFizz(currentNumber)) resultList.push('fizz');
+    if (isBuzz(currentNumber)) resultList.push('buzz');
+    if (isFizzBuzz(currentNumber)) resultList.push('fizzBuzz');
+    if (isBug(currentNumber)) resultList.push('bug!');
+  });
+
+  return resultList;
 }
+
+const numberToReplace = {
+  a: '1',
+  e: '2',
+  i: '3',
+  o: '4',
+  u: '5',
+};
 
 // Desafio 9
 function encode(phrase) {
   // seu código aqui
   let encoded = '';
+
   for (let index = 0; index < phrase.length; index += 1) {
-    // se o phrase na posição index não tiver nenhuma das vogais, o encoded recebe essa letra.
-    if (phrase[index] !== 'a' && phrase[index] !== 'e' && phrase[index] !== 'i' && phrase[index] !== 'o' && phrase[index] !== 'u') {
-      encoded += phrase[index];
-      // se phrase for alguma vogal, encoded recebe o número correspondente a sua vogal.
-    } else if (phrase[index] === 'a') {
-      encoded += '1';
-    } else if (phrase[index] === 'e') {
-      encoded += '2';
-    } else if (phrase[index] === 'i') {
-      encoded += '3';
-    } else if (phrase[index] === 'o') {
-      encoded += '4';
-    } else if (phrase[index] === 'u') {
-      encoded += '5';
+    const currentLetter = phrase[index];
+    if (numberToReplace[currentLetter]) { // ex: numberToReplace['a'] === true
+      encoded += numberToReplace[phrase[index]];
+    } else {
+      encoded += currentLetter;
     }
   }
+
   return encoded;
 }
 
-function decode(phrase2) {
+const letterToReplace = {
+  1: 'a',
+  2: 'e',
+  3: 'i',
+  4: 'o',
+  5: 'u',
+};
+
+function decode(phrase) {
   // seu código aqui
   let decoded = '';
-  for (let index = 0; index < phrase2.length; index += 1) {
-    // se o phrase2 na posição index não tiver nenhum número de 1 a 5, o encoded recebe essa letra.
-    if (phrase2[index] !== '1' && phrase2[index] !== '2' && phrase2[index] !== '3' && phrase2[index] !== '4' && phrase2[index] !== '5') {
-      decoded += phrase2[index];
-      // se phrase2 for alguma número de 1 a 5, encoded recebe a vogal correspondente ao seu número.
-    } else if (phrase2[index] === '1') {
-      decoded += 'a';
-    } else if (phrase2[index] === '2') {
-      decoded += 'e';
-    } else if (phrase2[index] === '3') {
-      decoded += 'i';
-    } else if (phrase2[index] === '4') {
-      decoded += 'o';
-    } else if (phrase2[index] === '5') {
-      decoded += 'u';
+
+  for (let index = 0; index < phrase.length; index += 1) {
+    const currentLetter = phrase[index];
+    if (letterToReplace[currentLetter]) { // ex: letterToReplace[1] === true
+      decoded += letterToReplace[phrase[index]];
+    } else {
+      decoded += currentLetter;
     }
   }
+
   return decoded;
 }
 
